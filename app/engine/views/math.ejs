@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title><%- view.pageTitle %></title>
+    </head>
+    <body>
+        <div><a href="/">Back</a></div>
+        <hr />
+        <form>
+            <div>
+                <input type="number" id="numeroUno" placeholder="First number" />
+            </div>
+            <div>
+                <input type="number" id="numeroDos" placeholder="Second number" />
+            </div>
+            <button id="performAction">Calculate</button>
+            <br />
+            <div>
+                <input type="text" id="result" placeholder="Result" />
+            </div>
+            <% if(view.level == "2") { %>
+                <div>
+                    <input type="text" id="result2" placeholder="Second result" />
+                </div>
+            <% } %>
+        </form>
+
+        <% /* Instead of providing static JS file, we generate the name based on accessed route */ %>
+        <script src="<%- view.jsName %>"></script>
+    </body>
+</html>

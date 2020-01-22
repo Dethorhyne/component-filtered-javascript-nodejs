@@ -1,0 +1,21 @@
+<% /*
+
+Entry point for Javascript packaging
+
+Actions/routes can be user here to specify which route-specific javascript template will be rendered.
+This method can be used to avoid having javascript which is not required in the page.
+
+In addition to route-specific javascript files, a common file can be excluded outside of EJS templating.
+
+*/ %>
+
+<% if(view.action == "adds") { %>
+    <%- include("adds/events"); %>
+<% } %>
+
+<% if(view.action == "subs") { %>
+    <%- include("subs/events"); %>
+<% } %>
+
+
+<%- include("common") %>

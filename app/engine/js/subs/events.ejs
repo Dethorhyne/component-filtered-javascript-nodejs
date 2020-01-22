@@ -1,0 +1,42 @@
+<% /*
+
+Event handling specific to /subs route which is used for substraction and division actions.
+while view.level here represents a parameter from the route, advanced level of security should come from middleware.
+
+This can be used to prevent rendering of Javascript which is not within the user's scope.
+Eg. User who's not allowed to do certain actions on the page can be served with a Javascript which won't contain such functions
+
+*/ %>
+
+
+<% if(view.level == "1") { %>
+    document.addEventListener('click', function (event) {
+        if (!event.target.matches('#performAction')) return;
+        event.preventDefault();
+    
+        var input1 = document.getElementById("numeroUno");
+        var input2 = document.getElementById("numeroDos");
+
+        var result = parseInt(input1.value) - parseInt(input2.value);
+
+        insertResult("result", result);
+    }, false);
+
+<% } %>
+
+<% if(view.level == "2") { %>
+    document.addEventListener('click', function (event) {
+        if (!event.target.matches('#performAction')) return;
+        event.preventDefault();
+    
+        var input1 = document.getElementById("numeroUno");
+        var input2 = document.getElementById("numeroDos");
+
+        var result = parseInt(input1.value) - parseInt(input2.value);
+        var result2 = parseInt(input1.value) / parseInt(input2.value);
+
+        insertResult("result", result);
+        insertResult("result2", result2);
+    }, false);
+
+<% } %>
